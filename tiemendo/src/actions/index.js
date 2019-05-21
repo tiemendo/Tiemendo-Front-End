@@ -4,7 +4,27 @@ import {history} from '../helpers/history';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
+export const REGISTER_START = 'REGISTER_START';
+export const REGISTER_SUCCESS = 'REGISTER_SUCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
 
+// Register
+export const register = (creds) => dispatch => {
+  dispatch({ type: REGISTER_START });
+  return axios.post(`${URL}/api/auth/register`, creds)
+  .then((res) => {
+    console.log(res);
+    localStorage.setItem('token', res.data.token);
+    localStorage.setItem('id', res.data.id);
+    dispatch({ type: REGISTER_SUCCESS, payload: res.data.token, id: res.data.id });
+  })
+  .catch((err) => {
+    console.log(err);
+    dispatch({ type: REGISTER_FAIL, payload: err});
+  })
+}
+
+// Login
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios.post('http://localhost:5000/api/login', creds).then(res => {

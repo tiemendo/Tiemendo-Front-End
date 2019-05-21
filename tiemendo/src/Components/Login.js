@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {login} from '../actions';
+import {NavLink} from 'react-router-dom';
 
 class Login extends React.Component {
     state = {
@@ -15,7 +17,7 @@ class Login extends React.Component {
           ...this.state.credentials,
           [e.target.name]: e.target.value
         }
-      });
+      })
     };
   
     login = e => {
@@ -36,25 +38,23 @@ class Login extends React.Component {
               placeholder="Username"
               value={this.state.credentials.username}
               onChange={this.handleChange}
+              className='input'
             />
             <label for="password">Password</label>
             <input
-              type="password"
+              type="text"
               name="password"
               placeholder="••••••••"
               value={this.state.credentials.password}
               onChange={this.handleChange}
+              className='input'
             />
             <div className="flex-spacer" />
             {this.props.error && <p className="error">{this.props.error}</p>}
   
-            <button>
-              {this.props.loggingIn ? (
-                <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-              ) : (
-                'Login'
-              )}
-            </button>
+            <button className='login-button'>Login</button>
+            <p>Dont have an account?</p>
+            <NavLink className='register-link' to='/register'>*Register</NavLink>
           </form>
         </div>
       );

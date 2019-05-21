@@ -13,6 +13,10 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "react-transition-group": "^4.0.1",
+    "styled-components": "^4.2.0",
+    "react-spring":"^8.0.20",
+    "recharts": "^1.6.1",
     "react-loader-spinner":"2.3.0"
   },
   "scripts": {
@@ -27,9 +31,7 @@
   "browserify": {
     "transform": ["babelify"]
   },
-  "parser": {
-    "babel-eslint"
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",
