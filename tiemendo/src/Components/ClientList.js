@@ -29,7 +29,7 @@ class ClientList extends React.Component {
                 onClick={() => this.deleteClient(client.id)}
               />
               <h4>{client.name}</h4>
-              <p>{client.email}</p>
+              <p>{client.password}</p>
               {this.props.deletingClient &&
                 this.state.deletingClientId === client.id && (
                   <p>Deleting Client 👋</p>

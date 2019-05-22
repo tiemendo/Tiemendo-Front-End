@@ -56,8 +56,8 @@ class ClientForm extends React.Component {
               <div className="baseline" />
     
               <input className='put'
-                type="number"
-                name="loan amount"
+                type="text"
+                name="loanAmount"
                 onChange={this.changeHandler}
                 placeholder="Loan Amount"
                 value={this.state.client.loanAmount}
@@ -65,8 +65,8 @@ class ClientForm extends React.Component {
               <div className="baseline" />
     
               <input className='put'
-                type="string"
-                name="loan initiation date"
+                type="text"
+                name="loanInitiationDate"
                 onChange={this.changeHandler}
                 placeholder="Loan Initiation Date"
                 value={this.state.client.loanInitiationDate}
@@ -74,7 +74,7 @@ class ClientForm extends React.Component {
               <div className="baseline" />
     
               <input className='put'
-                type="string"
+                type="date"
                 name="due date"
                 onChange={this.changeHandler}
                 placeholder="Due Date"

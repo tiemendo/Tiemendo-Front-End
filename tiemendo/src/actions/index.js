@@ -28,7 +28,7 @@ export const register = (creds) => dispatch => {
 // Login
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
-  return axios.post('http://localhost:5000/api/login', creds).then(res => {
+  return axios.post('https://chasegarsee-tiemendo.herokuapp.com/login', creds).then(res => {
     localStorage.setItem('token', res.data.payload);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
   });
