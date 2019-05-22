@@ -54,9 +54,33 @@
   margin: 0 auto;
   padding: 10px;
 }
+.baseline {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+}
 .input {
   padding: 10px;
   margin-bottom: 10px;
+}
+.put {
+  padding: 10px;
+}
+.client-button {
+  background-color: #939F5C;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+.client-button:hover {
+  color: white;
+background-color: #D16014;
+border: 1px solid #8694B8;
+cursor: pointer;
 }
 .login-button {
   background-color: #939F5C;

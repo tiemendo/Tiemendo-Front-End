@@ -25,7 +25,7 @@ class Register extends React.Component {
         e.preventDefault();
         this.props.register(this.state)
         .then(() => {
-            this.props.history.push("/home");
+            this.props.history.push('/protected');
         })
     }
 
