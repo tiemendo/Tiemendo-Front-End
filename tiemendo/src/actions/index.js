@@ -11,7 +11,8 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 // Register
 export const register = (creds) => dispatch => {
   dispatch({ type: REGISTER_START });
-  return axios.post(`${URL}/api/auth/register`, creds)
+  return axios.post(`https://chasegarsee-tiemendo.herokuapp.com/newuser
+  `, creds)
   .then((res) => {
     console.log(res);
     localStorage.setItem('token', res.data.token);
@@ -27,7 +28,7 @@ export const register = (creds) => dispatch => {
 // Login
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
-  return axios.post('http://localhost:5000/api/login', creds).then(res => {
+  return axios.post('https://chasegarsee-tiemendo.herokuapp.com/login', creds).then(res => {
     localStorage.setItem('token', res.data.payload);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
   });
@@ -41,7 +42,7 @@ export const USER_UNAUTHORIZED = 'FETCH_DATA_FAILURE';
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axios
-    .get('http://localhost:5000/api/friends', {
+    .get('https://chasegarsee-tiemendo.herokuapp.com/clients', {
       headers: { Authorization: localStorage.getItem('token') }
     })
     .then(res => {
@@ -64,7 +65,7 @@ export const DELETE_FAILURE = 'DELETE_FAILURE';
 export const deleteClients = id => dispatch => {
   dispatch({ type: DELETE_START });
   axios
-    .delete(`http://localhost:5000/api/friends/${id}`, {
+    .delete(`https://chasegarsee-tiemendo.herokuapp.com/client/${id}`, {
       headers: { Authorization: localStorage.getItem('token') }
     })
     .then(res => {
@@ -87,7 +88,7 @@ export const ADD_CLIENT_FAILURE = 'ADD_CLIENT_FAILURE';
 export const addClient = client => dispatch => {
   dispatch({ type: ADD_CLIENT_START });
   return axios
-    .post('http://localhost:5000/api/friends', client, {
+    .post('https://chasegarsee-tiemendo.herokuapp.com/client', client, {
       headers: { Authorization: localStorage.getItem('token') }
     })
     .then(res => {
@@ -109,7 +110,7 @@ export const EDIT_CLIENT_FAILURE = 'EDIT_CLIENT_FAILURE';
 export const editClient = client => dispatch => {
   dispatch({ type: EDIT_CLIENT_START });
   return axios
-    .put(`http://localhost:5000/api/friends/${client.id}`, client, {
+    .put(`https://chasegarsee-tiemendo.herokuapp.com/client/${client.id}`, client, {
       headers: { Authorization: localStorage.getItem('token') }
     })
     .then(res => {

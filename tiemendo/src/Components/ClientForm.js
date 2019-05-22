@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../Components/NavBar';
 
 class ClientForm extends React.Component {
     state = {
@@ -33,10 +34,10 @@ class ClientForm extends React.Component {
     
       render() {
         return (
-          <div>
-            <h2>Add New Client</h2>
-            <form onSubmit={this.handleSubmit}>
-              <input
+          <div className='login-form'>
+            <NavBar />
+            <form className='form' onSubmit={this.handleSubmit}>
+              <input className='put'
                 type="text"
                 name="name"
                 onChange={this.changeHandler}
@@ -45,7 +46,7 @@ class ClientForm extends React.Component {
               />
               <div className="baseline" />
     
-              <input
+              <input className='put'
                 type="text"
                 name="village"
                 onChange={this.changeHandler}
@@ -54,26 +55,26 @@ class ClientForm extends React.Component {
               />
               <div className="baseline" />
     
-              <input
-                type="number"
-                name="loan amount"
+              <input className='put'
+                type="text"
+                name="loanAmount"
                 onChange={this.changeHandler}
                 placeholder="Loan Amount"
                 value={this.state.client.loanAmount}
               />
               <div className="baseline" />
     
-              <input
-                type="string"
-                name="loan initiation date"
+              <input className='put'
+                type="text"
+                name="loanInitiationDate"
                 onChange={this.changeHandler}
                 placeholder="Loan Initiation Date"
                 value={this.state.client.loanInitiationDate}
               />
               <div className="baseline" />
     
-              <input
-                type="string"
+              <input className='put'
+                type="date"
                 name="due date"
                 onChange={this.changeHandler}
                 placeholder="Due Date"
@@ -81,7 +82,7 @@ class ClientForm extends React.Component {
               />
               <div className="baseline" />
     
-              <button className="md-button form-button">Add New Client</button>
+              <button className="client-button">Add New Client</button>
             </form>
           </div>
         );

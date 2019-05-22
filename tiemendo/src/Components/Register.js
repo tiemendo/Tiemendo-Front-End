@@ -25,7 +25,7 @@ class Register extends React.Component {
         e.preventDefault();
         this.props.register(this.state)
         .then(() => {
-            this.props.history.push("/home");
+            this.props.history.push('/protected');
         })
     }
 
@@ -61,7 +61,7 @@ class Register extends React.Component {
                     </input>
                     <button className="register-button">Register</button>
                     <p>Already have an account?</p>
-                    <NavLink className="login-link" to="/">*Login</NavLink>
+                    <NavLink className="login-link" to="/login">*Login</NavLink>
                 </form>
             </div>
             </CSSTransition>
