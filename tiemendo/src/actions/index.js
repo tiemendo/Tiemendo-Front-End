@@ -11,8 +11,8 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 // Register
 export const register = (creds) => dispatch => {
   dispatch({ type: REGISTER_START });
-  return axios.post(`https://chasegarsee-tiemendo.herokuapp.com/newuser
-  `, creds)
+  return axios.post('https://chasegarsee-tiemendo.herokuapp.com/newuser'
+  , creds)
   .then((res) => {
     console.log(res);
     localStorage.setItem('token', res.data.token);
@@ -85,42 +85,18 @@ export const ADD_CLIENT_START = 'ADD_CLIENT_START';
 export const ADD_CLIENT_SUCCESS = 'ADD_CLIENT_SUCCESS';
 export const ADD_CLIENT_FAILURE = 'ADD_CLIENT_FAILURE';
 
-export const addClient = client => dispatch => {
-  dispatch({ type: ADD_CLIENT_START });
+export const addClient = (newClient) => dispatch => {
+  dispatch({ type: ADD_CLIENT_START })
   return axios
-    .post('https://chasegarsee-tiemendo.herokuapp.com/client', client, {
+    .post('https://chasegarsee-tiemendo.herokuapp.com/client', newClient, {
       headers: { Authorization: localStorage.getItem('token') }
     })
     .then(res => {
       dispatch({ type: ADD_CLIENT_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      if (err.response.status === 403) {
-        dispatch({ type: USER_UNAUTHORIZED, payload: err.response });
-      } else {
-        dispatch({ type: ADD_CLIENT_FAILURE, payload: err.response });
-      }
-    });
-};
-
-export const EDIT_CLIENT_START = 'EDIT_CLIENT_START';
-export const EDIT_CLIENT_SUCCESS = 'EDIT_CLIENT_SUCCESS';
-export const EDIT_CLIENT_FAILURE = 'EDIT_CLIENT_FAILURE';
-
-export const editClient = client => dispatch => {
-  dispatch({ type: EDIT_CLIENT_START });
-  return axios
-    .put(`https://chasegarsee-tiemendo.herokuapp.com/client/${client.id}`, client, {
-      headers: { Authorization: localStorage.getItem('token') }
+        dispatch({ type: ADD_CLIENT_FAILURE, payload: err.response })
+      
     })
-    .then(res => {
-      dispatch({ type: EDIT_CLIENT_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      if (err.response.status === 403) {
-        dispatch({ type: USER_UNAUTHORIZED, payload: err.response });
-      } else {
-        dispatch({ type: EDIT_CLIENT_FAILURE, payload: err.response });
-      }
-    });
-};
+
+}

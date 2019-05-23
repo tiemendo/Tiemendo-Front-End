@@ -88,19 +88,19 @@ import {
           errorStatusCode: null,
           clients: action.payload
         };
-      case EDIT_CLIENT_START:
-        return {
-          ...state,
-          editingClient: true
-        };
-      case EDIT_CLIENT_SUCCESS:
-        return {
-          ...state,
-          editingClient: false,
-          error: '',
-          errorStatusCode: null,
-          clients: action.payload
-        };
+      // case EDIT_CLIENT_START:
+      //   return {
+      //     ...state,
+      //     editingClient: true
+      //   };
+      // case EDIT_CLIENT_SUCCESS:
+      //   return {
+      //     ...state,
+      //     editingClient: false,
+      //     error: '',
+      //     errorStatusCode: null,
+      //     clients: action.payload
+      //   };
       default:
         return state;
     }

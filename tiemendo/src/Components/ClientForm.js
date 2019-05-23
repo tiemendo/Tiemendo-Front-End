@@ -1,84 +1,91 @@
 import React from 'react';
+import {addClient} from '../actions';
 import NavBar from '../Components/NavBar';
+import {connect} from 'react-redux';
 
 class ClientForm extends React.Component {
-    state = {
-        client: {
-            name: '',
-            village: '',
-            loanAmount: '',
-            loanInitiationDate: '',
-            dueDate: ''
-        }
-    };
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      village: '',
+      loanAmount: '',
+      loanInitiationDate: '',
+      dueDate: ''
+    
+        };
+    }
 
-    changeHandler = ev => {
-        let value = ev.target.value;
-        const name = ev.target.name;
-        if (name === 'price') {
-          value = parseInt(value, 10);
-        }
-    
-        this.setState(prevState => ({
-          client: {
-            ...prevState.client,
-            [name]: value
-          }
-        }));
-      };
-    
-      handleSubmit = e => {
-        e.preventDefault();
-        this.props.addClient(this.state.client);
-      };
+    addClient = e => {
+      e.preventDefault();
+      const newClient = {
+        name: this.state.name,
+        village: this.state.village,
+        loanAmount: this.state.loanAmount,
+        loanInitiationDate: this.state.loanInitiationDate,
+        dueDate: this.state.dueDate
+      }
+      this.props.addClient(newClient);
+
+      this.setState({
+        name: '',
+        village: '',
+        loanAmount: '',
+        loanInitiationDate: '',
+        dueDate: ''
+      })
+    }
+    handleInputChange = e => {
+      this.setState({[e.target.name]: e.target.value})
+    }
     
       render() {
         return (
           <div className='login-form'>
             <NavBar />
-            <form className='form' onSubmit={this.handleSubmit}>
+            <form onSubmit={this.addClient}>
               <input className='put'
                 type="text"
                 name="name"
-                onChange={this.changeHandler}
+                onChange={this.handleInputChange}
                 placeholder="name"
-                value={this.state.client.name}
+                value={this.state.name}
               />
               <div className="baseline" />
     
               <input className='put'
                 type="text"
                 name="village"
-                onChange={this.changeHandler}
+                onChange={this.handleInputChange}
                 placeholder="Village"
-                value={this.state.client.village}
+                value={this.state.village}
               />
               <div className="baseline" />
     
               <input className='put'
                 type="text"
                 name="loanAmount"
-                onChange={this.changeHandler}
+                onChange={this.handleInputChange}
                 placeholder="Loan Amount"
-                value={this.state.client.loanAmount}
-              />
-              <div className="baseline" />
-    
-              <input className='put'
-                type="text"
-                name="loanInitiationDate"
-                onChange={this.changeHandler}
-                placeholder="Loan Initiation Date"
-                value={this.state.client.loanInitiationDate}
+                value={this.state.loanAmount}
               />
               <div className="baseline" />
     
               <input className='put'
                 type="date"
-                name="due date"
-                onChange={this.changeHandler}
+                name="loanInitiationDate"
+                onChange={this.handleInputChange}
+                placeholder="Loan Initiation Date"
+                value={this.state.loanInitiationDate}
+              />
+              <div className="baseline" />
+    
+              <input className='put'
+                type="date"
+                name="dueDate"
+                onChange={this.handleInputChange}
                 placeholder="Due Date"
-                value={this.state.client.dueDate}
+                value={this.state.dueDate}
               />
               <div className="baseline" />
     
@@ -89,4 +96,11 @@ class ClientForm extends React.Component {
       }
 }
 
-export default ClientForm;
+const mapStateToProps = state => {
+  return {
+    addingClient: state.addingClient,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {addClient})(ClientForm);
