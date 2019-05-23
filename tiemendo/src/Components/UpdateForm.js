@@ -32,12 +32,18 @@ class UpdateForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <input
                 type="text"
-                name="name"
+                name="firstName"
                 onChange={this.changeHandler}
-                placeholder="name"
-                value={this.state.client.name}
+                placeholder="first"
+                value={this.state.client.firstName}
               />
-              <div className="baseline" />
+              <input
+                type='text'
+                name='lastName'
+                onChange={this.changeHandler}
+                placeholder='last'
+                value={this.state.client.lastName}
+                />
     
               <input
                 type="text"
@@ -46,7 +52,6 @@ class UpdateForm extends React.Component {
                 placeholder="Village"
                 value={this.state.client.village}
               />
-              <div className="baseline" />
     
               <input
                 type="number"
@@ -55,7 +60,6 @@ class UpdateForm extends React.Component {
                 placeholder="Loan Amount"
                 value={this.state.client.loanAmount}
               />
-              <div className="baseline" />
     
               <input
                 type="string"
@@ -64,7 +68,6 @@ class UpdateForm extends React.Component {
                 placeholder="Loan Initiation Date"
                 value={this.state.client.loanInitiationDate}
               />
-              <div className="baseline" />
     
               <input
                 type="string"
@@ -73,7 +76,6 @@ class UpdateForm extends React.Component {
                 placeholder="Due Date"
                 value={this.state.client.dueDate}
               />
-              <div className="baseline" />
     
               <button className="md-button form-button">Update Client</button>
             </form>

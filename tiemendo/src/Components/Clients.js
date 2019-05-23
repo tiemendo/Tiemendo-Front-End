@@ -10,22 +10,21 @@ class Clients extends React.Component {
 
     render() {
         return (
-          <div className="client-list">
-            <h1>Clients</h1>
-          {this.props.clients.map(client => {
-            return(
-              <Client
-              key={client.id}
-              name={client.name}
-              village={client.village}
-              loanAmount={client.loanAmount}
-              loanInitiationDate={client.loanInitiationDate}
-              dueDate={client.dueDate}
-             />
-            );
-            })}
-        </div>
-      );
+          <div>
+            <div className="client-list">
+            {this.props.clients.map(client => (
+              <div key={client.id}>
+              <h3>First Name: {client.firstName}</h3>
+              <h3>Last Name: {client.lastName}</h3>
+              <p>village: {client.village}</p>
+              <p>loanAmount: {client.loanAmount}</p>
+              <p>loanInitiationDate: {client.loanInitiationDate}</p>
+              <p>dueDate: {client.dueDate}</p>
+             </div>
+            ))}
+            </div>
+            </div>
+      )
     }
   }
 

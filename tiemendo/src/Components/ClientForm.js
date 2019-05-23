@@ -7,7 +7,8 @@ class ClientForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
+      firstName: '',
+      lastName: '',
       village: '',
       loanAmount: '',
       loanInitiationDate: '',
@@ -19,7 +20,8 @@ class ClientForm extends React.Component {
     addClient = e => {
       e.preventDefault();
       const newClient = {
-        name: this.state.name,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         village: this.state.village,
         loanAmount: this.state.loanAmount,
         loanInitiationDate: this.state.loanInitiationDate,
@@ -28,7 +30,8 @@ class ClientForm extends React.Component {
       this.props.addClient(newClient);
 
       this.setState({
-        name: '',
+        firstName: '',
+        lastName: '',
         village: '',
         loanAmount: '',
         loanInitiationDate: '',
@@ -46,12 +49,18 @@ class ClientForm extends React.Component {
             <form onSubmit={this.addClient}>
               <input className='put'
                 type="text"
-                name="name"
+                name="firstName"
                 onChange={this.handleInputChange}
-                placeholder="name"
-                value={this.state.name}
+                placeholder="First Name"
+                value={this.state.firstName}
               />
-              <div className="baseline" />
+              <input className='put'
+                type='text'
+                name='lastName'
+                onChange={this.handleInputChange}
+                placeholder='Last Name'
+                value={this.state.lastName}
+                />
     
               <input className='put'
                 type="text"
@@ -60,7 +69,6 @@ class ClientForm extends React.Component {
                 placeholder="Village"
                 value={this.state.village}
               />
-              <div className="baseline" />
     
               <input className='put'
                 type="text"
@@ -69,7 +77,6 @@ class ClientForm extends React.Component {
                 placeholder="Loan Amount"
                 value={this.state.loanAmount}
               />
-              <div className="baseline" />
     
               <input className='put'
                 type="date"
@@ -78,7 +85,6 @@ class ClientForm extends React.Component {
                 placeholder="Loan Initiation Date"
                 value={this.state.loanInitiationDate}
               />
-              <div className="baseline" />
     
               <input className='put'
                 type="date"
@@ -87,7 +93,6 @@ class ClientForm extends React.Component {
                 placeholder="Due Date"
                 value={this.state.dueDate}
               />
-              <div className="baseline" />
     
               <button className="client-button">Add New Client</button>
             </form>
