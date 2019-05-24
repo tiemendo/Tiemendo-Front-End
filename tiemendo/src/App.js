@@ -20,10 +20,10 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Route path="/login" component={Login} />
+        <Route  exact path="/login" component={Login} />
         <Route path="/protected" component={ClientList} />
         <Route path="/client-form" component={ClientForm} />
-        <Route path="/register" component={Register} />
+        <Route exact path="/" component={Register} />
       </div>
     </Router>
   );
