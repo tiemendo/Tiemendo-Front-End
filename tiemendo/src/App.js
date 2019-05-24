@@ -6,7 +6,6 @@ import ClientList from './Components/ClientList';
 import ClientForm from './Components/ClientForm';
 import Register from './Components/Register';
 
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -25,6 +24,7 @@ function App() {
       <PrivateRoute exact path='/protected' component={ClientList} />
       <PrivateRoute exact path='/client-form' component={ClientForm} />
       <PrivateRoute exact path='/register' component={Register} />
+      
     </div>
     </Router>
     
