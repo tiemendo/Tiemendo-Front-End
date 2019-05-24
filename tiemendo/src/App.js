@@ -12,7 +12,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        <Route exact path="/login" component={Login} />
+        <Route path="/protected" component={ClientList} />
+        <Route path="/client-form" component={ClientForm} />
+        <Route exact path="/" component={Register} />
+        <nav className="nav">
           <ul>
             <li>
               <Link to="/client-form">Add Client</Link>
@@ -20,10 +24,6 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Route  exact path="/login" component={Login} />
-        <Route path="/protected" component={ClientList} />
-        <Route path="/client-form" component={ClientForm} />
-        <Route exact path="/" component={Register} />
       </div>
     </Router>
   );

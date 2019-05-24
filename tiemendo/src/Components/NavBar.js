@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const LinkElem = styled(NavLink)`
-// example style
-&.active {
-  color: #33313b;
-  border-bottom: 1px solid #33313b;
-}
+  // example style
+  &.active {
+    color: #33313b;
+    border-bottom: 1px solid #33313b;
+  }
 `;
 
 const NavBar = styled.div`
@@ -15,7 +15,7 @@ padding-top: 15px;
 padding-bottom: 15px;
 width: 100%
 border-bottom: 1px solid white;
-background-color: #D16014
+background-color: #D16014;
     nav{
       display:flex;
       justify-content: space-around;
@@ -47,41 +47,33 @@ background-color: #D16014
 }
 `;
 
-class Navbar extends React.Component{
-  constructor(){
-    super()
+class Navbar extends React.Component {
+  constructor() {
+    super();
     this.state = {
       activeTab: 0
-    }
-    
+    };
   }
 
-
-
-  findTab = (tabNumber) =>{
- 
+  findTab = tabNumber => {
     this.setState({
       ...this.state,
-      activeTab: tabNumber,
-    
-      
-      
-    })
+      activeTab: tabNumber
+    });
+  };
 
+  render() {
+    return (
+      <NavBar>
+        <nav>
+          <LinkElem to={"/login"}>Login</LinkElem>
+          <LinkElem exact to={"/"}>
+            Home
+          </LinkElem>
+        </nav>
+      </NavBar>
+    );
   }
-  
-
-  render(){
-  return (
-    <NavBar>
-      <nav>
-        <LinkElem to={"/login"}>Login</LinkElem>
-        <LinkElem exact to={"/"}>Home</LinkElem>
-     
-      </nav>
-    </NavBar>
-  );
-  }
-};
+}
 
 export default Navbar;
