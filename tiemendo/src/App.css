@@ -10,7 +10,15 @@ html {
   font-size: 20px;
   width: 100%;
   background: lightcoral;
-  padding: 10px;
+  padding: 8px;
+}
+
+.list-el {
+  display: flex;
+  max-width: 30%;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-decoration: none;
 }
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

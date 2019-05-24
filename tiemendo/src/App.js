@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/" component={Register} />
         <nav className="nav">
           <ul>
-            <li>
+            <li className="list-el">
               <Link to="/client-form">Add Client</Link>
               <Link to="/protected">Clients</Link>
             </li>
